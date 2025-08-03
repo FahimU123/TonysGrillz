@@ -8,12 +8,11 @@
 import Foundation
 
 class AppEnvironment {
-    static let supabaseURL: URL = {
-        guard let urlString = Bundle.main.infoDictionary?["Supabase URL"] as? String,
-              let url = URL(string: urlString) else {
+    static let supabaseURL: String = {
+        guard let urlString = Bundle.main.infoDictionary?["Supabase URL"] as? String else {
             fatalError("Supabase URL not found in Info.plist")
         }
-        return url
+        return urlString
     }()
     
     static let supabaseKey: String = {

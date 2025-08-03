@@ -12,6 +12,7 @@
 		DDF2C2882E3EB09000F6F2B7 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = DDF2C2872E3EB09000F6F2B7 /* PostgREST */; };
 		DDF2C28A2E3EB09000F6F2B7 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = DDF2C2892E3EB09000F6F2B7 /* Realtime */; };
 		DDF2C28C2E3EB09000F6F2B7 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = DDF2C28B2E3EB09000F6F2B7 /* Storage */; };
+		DDF2C2962E3FF0A800F6F2B7 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = DDF2C2952E3FF0A800F6F2B7 /* Supabase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 			files = (
 				DDF2C2882E3EB09000F6F2B7 /* PostgREST in Frameworks */,
 				DDF2C2862E3EB09000F6F2B7 /* Functions in Frameworks */,
+				DDF2C2962E3FF0A800F6F2B7 /* Supabase in Frameworks */,
 				DDF2C2842E3EB09000F6F2B7 /* Auth in Frameworks */,
 				DDF2C28C2E3EB09000F6F2B7 /* Storage in Frameworks */,
 				DDF2C28A2E3EB09000F6F2B7 /* Realtime in Frameworks */,
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				DDF2C26A2E3EA69500F6F2B7 /* TonysGrillz */,
+				DDF2C2942E3FF0A800F6F2B7 /* Frameworks */,
 				DDF2C2692E3EA69500F6F2B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,6 +72,13 @@
 				DDF2C2682E3EA69500F6F2B7 /* TonysGrillz.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DDF2C2942E3FF0A800F6F2B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +106,7 @@
 				DDF2C2872E3EB09000F6F2B7 /* PostgREST */,
 				DDF2C2892E3EB09000F6F2B7 /* Realtime */,
 				DDF2C28B2E3EB09000F6F2B7 /* Storage */,
+				DDF2C2952E3FF0A800F6F2B7 /* Supabase */,
 			);
 			productName = TonysGrillz;
 			productReference = DDF2C2682E3EA69500F6F2B7 /* TonysGrillz.app */;
@@ -405,6 +416,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DDF2C2822E3EB09000F6F2B7 /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Storage;
+		};
+		DDF2C2952E3FF0A800F6F2B7 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDF2C2822E3EB09000F6F2B7 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
