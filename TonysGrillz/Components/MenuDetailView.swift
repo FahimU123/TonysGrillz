@@ -29,8 +29,7 @@ struct MenuDetailView: View {
             } label: {
                 Text("add to cart")
             }
-            }
-        
+        }
     }
 }
 

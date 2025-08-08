@@ -10,7 +10,7 @@ import Foundation
 
 @Model
 class Cart: Identifiable {
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     var menuItems: MenuItems
     var quantity: Int
     

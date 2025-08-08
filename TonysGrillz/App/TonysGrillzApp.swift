@@ -19,6 +19,8 @@ struct TonysGrillzApp: App {
 }
 
 // Next Steps:
-// Data persistence for cart methods
-// Everything in SwiftData seems setup, next up is fetching the information
+// Local first architecture
 // More documentation
+// Look more into this article
+
+//https://medium.com/@mabuex/local-first-with-swiftdata-and-supabase-434b0a473dd6
