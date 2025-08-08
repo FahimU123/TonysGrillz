@@ -5,10 +5,12 @@
 //  Created by Fahim Uddin on 8/5/25.
 //
 
+import SwiftData
 import SwiftUI
 
 struct CartView: View {
-    @State private var cartViewModel = CartViewModel()
+    let cartViewModel: CartViewModel
+    @Query var cartItems: [Cart]
     var body: some View {
         VStack {
             ForEach(cartViewModel.cartItem) { cartItem in
@@ -19,12 +21,8 @@ struct CartView: View {
     }
 }
 
-#Preview {
-    CartView()
-}
+//#Preview {
+//    CartView(cartViewModel: CartViewModel())
+//}
 
-// Next Steps:
-// How to check value of quantity in debugger
-// Data persistence for cart methods
-// More documentation
 

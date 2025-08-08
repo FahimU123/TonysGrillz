@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var cartViewModel = CartViewModel()
     var body: some View {
         TabView {
             LoggedOutView()
@@ -15,15 +16,15 @@ struct MainView: View {
                     Label("Home", systemImage: "house")
                 }
             
-            MenuView()
+            MenuView(cartViewModel: cartViewModel)
                 .tabItem {
                     Label("Order", systemImage: "square.and.pencil")
                 }
             
-            CartView()
+            CartView(cartViewModel: cartViewModel)
                 .tabItem {
                     Label("Cart", systemImage: "book")
-                }
+            }
         }
     }
 }

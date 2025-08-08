@@ -7,12 +7,12 @@
 
 import Foundation
 
-
-struct CartViewModel {
+@Observable
+class CartViewModel {
     var cartItem: [Cart] = []
     
-    mutating func addToCart(item: MenuItems) {
-        /// If it is already in the acrt, then increment quantity
+    func addToCart(item: MenuItems) {
+        /// If it is already in the cart, then increment quantity
         if let index = cartItem.firstIndex(where: { $0.menuItems.id == item.id}) {
             cartItem[index].quantity += 1
         } else {

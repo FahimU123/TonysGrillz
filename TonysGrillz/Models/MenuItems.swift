@@ -5,9 +5,11 @@
 //  Created by Fahim Uddin on 8/3/25.
 //
 
+import SwiftData
 import Foundation
 
-struct MenuItems: Identifiable, Codable {
+@Model
+class MenuItems: Identifiable, Codable {
     let id: UUID
     let name: String
     let price: Double

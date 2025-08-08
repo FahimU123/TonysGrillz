@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MenuItemCard: View {
     let item: MenuItems
-    @State private var cartViewModel = CartViewModel()
+    var cartViewModel: CartViewModel
     @State private var isPresenting = false
     
     var body: some View {
@@ -36,11 +36,11 @@ struct MenuItemCard: View {
         }
         .fullScreenCover(isPresented: $isPresenting) {
       
-            MenuDetailView(cartViewModel: CartViewModel(), item: item)
+            MenuDetailView(cartViewModel: cartViewModel, item: item)
         }
     }
 }
-#Preview {
-    MenuItemCard(item: MenuItems(id: UUID(), name: "", price: 12.99, description: "", isAvailable: true, image: "burger"))
-}
+//#Preview {
+//    MenuItemCard(item: MenuItems(id: UUID(), name: "", price: 12.99, description: "", isAvailable: true, image: "burger"), cartViewModel: CartViewModel())
+//}
 

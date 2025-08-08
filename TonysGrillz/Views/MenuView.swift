@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MenuView: View {
     @State private var menuItemsViewModel = MenuItemsViewModel(backendService: SupabaseService())
+    var cartViewModel: CartViewModel
     
     var body: some View {
         NavigationStack {
@@ -16,7 +17,7 @@ struct MenuView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: 15)], spacing: 15) {
                         ForEach(menuItemsViewModel.menuItems) { item in
-                            MenuItemCard(item: item)
+                            MenuItemCard(item: item, cartViewModel: cartViewModel)
                         }
                     }
                     .padding(.horizontal)
@@ -24,6 +25,15 @@ struct MenuView: View {
                 .padding(.top)
             }
             .navigationTitle("Main Menu")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        CartView(cartViewModel: cartViewModel)
+                    } label: {
+                        Image(systemName: "cart")
+                    }
+                }
+            }
             .onAppear {
                 Task {
                     await menuItemsViewModel.loadMenuItems()
@@ -34,5 +44,5 @@ struct MenuView: View {
 }
 
 #Preview {
-    MenuView()
+    MenuView(cartViewModel: CartViewModel())
 }

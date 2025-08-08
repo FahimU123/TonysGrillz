@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MenuDetailView: View {
     @Environment(\.dismiss) var dismiss
-    @State var cartViewModel: CartViewModel
+    @Environment(\.modelContext) private var modelContext
+    var cartViewModel: CartViewModel
     let item: MenuItems
     var body: some View {
         VStack(alignment: .leading) {
@@ -23,6 +24,8 @@ struct MenuDetailView: View {
             
             Button {
                 cartViewModel.addToCart(item: item)
+                modelContext.insert(item)
+                
             } label: {
                 Text("add to cart")
             }
@@ -31,8 +34,8 @@ struct MenuDetailView: View {
     }
 }
 
-#Preview {
-    MenuDetailView(cartViewModel: CartViewModel(), item: MenuItems(id: UUID(), name: "", price: 12.99, description: "", isAvailable: true, image: "burger")
-    )
-}
+//#Preview {
+//    MenuDetailView(cartViewModel: CartViewModel(), item: MenuItems(id: UUID(), name: "", price: 12.99, description: "", isAvailable: true, image: "burger")
+//    )
+//}
 
