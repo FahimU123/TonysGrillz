@@ -9,8 +9,14 @@ import Foundation
 
 struct Order: Identifiable, Codable {
     let id: UUID
-    let user_id: UUID
-    let total_amount: Double
+    let userId: UUID
+    let totalAmount: Double
     let status: String
-    let created_at: Date
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userId = "user_id"
+        case totalAmount = "total_amount"
+        case status
+    }
 }

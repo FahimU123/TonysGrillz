@@ -9,16 +9,25 @@ import SwiftUI
 
 struct MenuView: View {
     @State private var menuItemsViewModel = MenuItemsViewModel(backendService: SupabaseService())
-
+    
     var body: some View {
-        VStack {
-            ForEach(menuItemsViewModel.menuItems) { menuItems in
-                Text(menuItems.name)
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: 15)], spacing: 15) {
+                        ForEach(menuItemsViewModel.menuItems) { item in
+                            MenuItemCard(item: item)
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+                .padding(.top)
             }
-        }
-        .onAppear {
-            Task {
-                await menuItemsViewModel.loadMenuItems()
+            .navigationTitle("Main Menu")
+            .onAppear {
+                Task {
+                    await menuItemsViewModel.loadMenuItems()
+                }
             }
         }
     }

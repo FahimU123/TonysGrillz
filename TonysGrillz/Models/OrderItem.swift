@@ -9,7 +9,14 @@ import Foundation
 
 struct OrderItem: Identifiable, Codable {
     let id: UUID
-    let order_id: UUID
-    let menu_item_id: UUID
+    let orderId: UUID
+    let menuItemId: UUID
     let quantity: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case orderId = "order_id"
+        case menuItemId = "menu_item_id"
+        case quantity
+    }
 }

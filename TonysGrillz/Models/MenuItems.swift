@@ -13,6 +13,7 @@ struct MenuItems: Identifiable, Codable {
     let price: Double
     let description: String
     let isAvailable: Bool
+    let image: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -20,6 +21,7 @@ struct MenuItems: Identifiable, Codable {
         case price
         case description
         case isAvailable = "is_available"
+        case image
     }
 }
 

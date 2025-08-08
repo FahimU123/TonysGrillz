@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct CartView: View {
+    @State private var cartViewModel = CartViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ForEach(cartViewModel.cartItem) { cartItem in
+                Text("\(cartItem.quantity)")
+            }
+        }
+
     }
 }
 
 #Preview {
     CartView()
 }
+
+// Next Steps:
+// How to check value of quantity in debugger
+// Data persistence for cart methods
+// More documentation
+
