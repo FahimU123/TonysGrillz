@@ -6,13 +6,11 @@
 //
 
 import Foundation
-import SwiftData
 
 protocol BackendService {
     func fetchMenuItems() async throws -> [MenuItems]
     func signOut() async throws
 }
-
 
 extension BackendService {
     func fetchMenuItems() async throws -> [MenuItems] {
@@ -21,11 +19,6 @@ extension BackendService {
             .select()
             .execute()
             .value
-        
-        for item in menuItems {
-            let context = container.mainContext
-
-        }
         return menuItems
     }
 }

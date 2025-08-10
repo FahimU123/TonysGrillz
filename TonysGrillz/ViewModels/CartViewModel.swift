@@ -21,7 +21,36 @@ class CartViewModel {
         }
     }
     
-    func removeFromCart(item: MenuItems) {
-        
+    func increaseQuantity(item: MenuItems) {
+        if let index = cartItem.firstIndex(where: { $0.menuItems.id == item.id}) {
+            cartItem[index].quantity += 1
+        }
+    }
+    
+    func decreaseQuantity(item: MenuItems) {
+        if let index = cartItem.firstIndex(where: { $0.menuItems.id == item.id}) {
+            cartItem[index].quantity -= 1
+            if cartItem[index].quantity <= 0 {
+                cartItem.remove(at: index)
+            }
+        }
+    }
+    
+    func clearCart() {
+        cartItem.removeAll()
+    }
+    
+    var subtotal: Double {
+        cartItem.reduce(0) { result, item in
+            return result + Double(item.quantity) * item.menuItems.price
+        }
+    }
+    
+    var tax: Double {
+        subtotal * 0.06
+    }
+    
+    var grandTotal: Double {
+        subtotal + tax
     }
 }

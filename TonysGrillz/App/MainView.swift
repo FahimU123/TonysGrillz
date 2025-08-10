@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @State private var cartViewModel = CartViewModel()
+    
     var body: some View {
         TabView {
             LoggedOutView()
