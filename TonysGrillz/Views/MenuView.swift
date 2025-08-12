@@ -9,12 +9,12 @@ import SwiftUI
 
 struct MenuView: View {
     @State private var menuItemsViewModel = MenuItemsViewModel(backendService: SupabaseService())
-    var cartViewModel: CartViewModel
+    let cartViewModel: CartViewModel
     
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading) {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: 15)], spacing: 15) {
                         ForEach(menuItemsViewModel.menuItems) { item in
                             MenuItemCard(item: item, cartViewModel: cartViewModel)
@@ -26,7 +26,7 @@ struct MenuView: View {
             }
             .navigationTitle("Main Menu")
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .primaryAction) {
                     NavigationLink {
                         CartView(cartViewModel: cartViewModel)
                     } label: {

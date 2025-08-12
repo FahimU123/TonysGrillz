@@ -9,14 +9,14 @@ import SwiftUI
 
 struct MenuItemCard: View {
     let item: MenuItems
-    var cartViewModel: CartViewModel
+    let cartViewModel: CartViewModel
     @State private var isPresenting = false
     
     var body: some View {
         Button {
             self.isPresenting = true
         } label: {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading) {
                 Image(item.image)
                     .resizable()
                     .scaledToFill()
@@ -26,6 +26,7 @@ struct MenuItemCard: View {
                 
                 Text(item.name)
                     .font(.headline)
+                    .multilineTextAlignment(.leading)
                 
                 Text(item.price, format: .currency(code: "USD"))
                     .font(.subheadline)
@@ -35,12 +36,11 @@ struct MenuItemCard: View {
    
         }
         .fullScreenCover(isPresented: $isPresenting) {
-      
             MenuDetailView(cartViewModel: cartViewModel, item: item)
         }
     }
 }
-//#Preview {
-//    MenuItemCard(item: MenuItems(id: UUID(), name: "", price: 12.99, description: "", isAvailable: true, image: "burger"), cartViewModel: CartViewModel())
-//}
+#Preview {
+    MenuItemCard(item: MenuItems(id: UUID(), name: "ss", price: 12.99, details: "ddsssssssssssd", isAvailable: true, image: "burger"), cartViewModel: CartViewModel())
+}
 

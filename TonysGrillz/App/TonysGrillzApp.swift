@@ -18,4 +18,5 @@ struct TonysGrillzApp: App {
 
 // Next Steps:
 // More documentation
+// Handle loading as network requests happen
 

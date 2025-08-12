@@ -11,6 +11,20 @@ import Foundation
 class CartViewModel {
     var cartItem: [Cart] = []
     
+    var subtotal: Double {
+        cartItem.reduce(0) { result, item in
+            return result + Double(item.quantity) * item.menuItems.price
+        }
+    }
+    
+    var tax: Double {
+        subtotal * 0.06
+    }
+    
+    var grandTotal: Double {
+        subtotal + tax
+    }
+    
     func addToCart(item: MenuItems) {
         /// If it is already in the cart, then increment quantity
         if let index = cartItem.firstIndex(where: { $0.menuItems.id == item.id}) {
@@ -38,19 +52,5 @@ class CartViewModel {
     
     func clearCart() {
         cartItem.removeAll()
-    }
-    
-    var subtotal: Double {
-        cartItem.reduce(0) { result, item in
-            return result + Double(item.quantity) * item.menuItems.price
-        }
-    }
-    
-    var tax: Double {
-        subtotal * 0.06
-    }
-    
-    var grandTotal: Double {
-        subtotal + tax
     }
 }
