@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-class MenuItemsViewModel {
+final class MenuItemsViewModel {
     var menuItems: [MenuItems] = []
     let backendService: BackendService
     

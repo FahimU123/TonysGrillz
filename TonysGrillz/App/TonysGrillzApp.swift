@@ -19,4 +19,7 @@ struct TonysGrillzApp: App {
 // Next Steps:
 // More documentation
 // Handle loading as network requests happen
-
+// Data perisstentce
+// Appcheck/Security Docs in Supabse/Captcha
+// Auth
+// Get Apple Credentils

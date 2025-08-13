@@ -8,6 +8,7 @@
 import SwiftData
 import Foundation
 
+/// Temp holding place for users selections, no need to go to the backend
 struct Cart: Identifiable, Codable {
     var id: UUID
     var menuItems: MenuItems

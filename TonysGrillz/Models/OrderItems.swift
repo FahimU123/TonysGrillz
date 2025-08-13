@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct OrderItem: Identifiable, Codable {
+/// like the details of a receipt, the item, quantity, etc
+struct OrderItems: Identifiable, Codable {
     let id: UUID
     let orderId: UUID
-    let menuItemId: UUID
-    let quantity: Int
+    var menuItemId: UUID
+    var quantity: Int
     
     enum CodingKeys: String, CodingKey {
         case id

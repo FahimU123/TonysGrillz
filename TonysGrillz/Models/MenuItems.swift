@@ -8,6 +8,7 @@
 import SwiftData
 import Foundation
 
+/// Holds all menu items
 struct MenuItems: Identifiable, Codable {
     var id: UUID
     var name: String

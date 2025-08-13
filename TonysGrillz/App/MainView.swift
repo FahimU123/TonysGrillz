@@ -26,6 +26,11 @@ struct MainView: View {
                 .tabItem {
                     Label("Cart", systemImage: "book")
             }
+            
+            AccountView()
+                .tabItem {
+                    Label("Account", systemImage: "person")
+                }
         }
     }
 }

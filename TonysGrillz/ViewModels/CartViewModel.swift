@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-class CartViewModel {
+final class CartViewModel {
     var cartItem: [Cart] = []
     
     var subtotal: Double {

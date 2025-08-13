@@ -7,11 +7,12 @@
 
 import Foundation
 
+/// Holds a completed order, think of it like the header of a reciepts
 struct Order: Identifiable, Codable {
     let id: UUID
     let userId: UUID
-    let totalAmount: Double
-    let status: String
+    var totalAmount: Double
+    var status: String
     
     enum CodingKeys: String, CodingKey {
         case id
