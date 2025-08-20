@@ -11,13 +11,11 @@ import Foundation
 struct User: Identifiable, Codable {
     let id: UUID
     let email: String
-    let lastName: String
-    let firstName: String
+    let fullName: String
     
     enum CodingKeys: String, CodingKey {
         case id
         case email
-        case firstName = "first_name"
-        case lastName = "last_name"
+        case fullName = "first_name"
     }
 }

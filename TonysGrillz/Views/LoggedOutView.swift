@@ -9,6 +9,8 @@ import AuthenticationServices
 import SwiftUI
 
 struct LoggedOutView: View {
+    @Binding var isLoggedIn: Bool
+    let user: User
     var body: some View {
         VStack {
             SignInWithAppleButton { request in
@@ -25,32 +27,35 @@ struct LoggedOutView: View {
                         else {
                             return
                         }
+                        guard let newEmail = credential.email else {
+                            return
+                        }
+                        guard let newFullName = credential.fullName?.givenName else {
+                            return
+                        }
+//                        let newUser = User(id: UUID(), email: newEmail, fullName: newFullName)
                         try await SupabaseService.supabase.auth.signInWithIdToken(
                             credentials: .init(
                                 provider: .apple,
                                 idToken: idToken
                             )
                         )
+                        
+                        isLoggedIn = true
                     } catch {
                         dump(error)
                     }
+                    
+                   
                 }
             }
             .fixedSize()
-            
-            Button {
-                Task {
-                    _ = try await SupabaseService.supabase.auth.signInAnonymously()
-                }
-            } label: {
-                Text("Anon Sign In")
-            }
         }
     }
 }
 
 
-#Preview {
-    LoggedOutView()
-}
+//#Preview {
+//    LoggedOutView(isLoggedIn: .constant(true))
+//}
 

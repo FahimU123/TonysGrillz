@@ -43,12 +43,12 @@ final class CartViewModel {
     
     func decreaseQuantity(item: MenuItems) {
         if let index = cartItem.firstIndex(where: { $0.menuItems.id == item.id}) {
+            if cartItem[index].quantity > 1 {
             cartItem[index].quantity -= 1
-            if cartItem[index].quantity <= 0 {
-                cartItem.remove(at: index)
             }
         }
     }
+    
     
     func clearCart() {
         cartItem.removeAll()

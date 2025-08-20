@@ -9,7 +9,9 @@ import SwiftUI
 
 struct MenuDetailView: View {
     @Environment(\.dismiss) var dismiss
+    /// Manages the cart state with its cartItem array
     let cartViewModel: CartViewModel
+    /// Specific instance of MenuItems model
     let item: MenuItems
     
     var body: some View {
@@ -30,30 +32,21 @@ struct MenuDetailView: View {
                             .foregroundColor(.primary)
                             .multilineTextAlignment(.leading)
                         
-                        // FIXME: Bug where when you decrease to 0 everything in here dissapears, also plsu minus buttons dulipcate hwne swiicthing from one itme to another
-                        ForEach(cartViewModel.cartItem) { cartItem in
-                                HStack {
-                                    Button {
-                                        cartViewModel.decreaseQuantity(item: item)
-                                    } label: {
-                                        Image(systemName: "minus.circle.fill")
-                                            .font(.title2)
-                                            .foregroundColor(.red)
-                                            .padding()
-                                    }
-                                    Text("\(cartItem.quantity)")
-                                        .font(.title3)
-                                        .fontWeight(.bold)
-                                    Button {
-                                        cartViewModel.addToCart(item: item)
-                                    } label: {
-                                        Image(systemName: "plus.circle.fill")
-                                            .font(.title2)
-                                            .foregroundColor(.green)
-                                            .padding()
+                       // Checks the cartItem property in the cartViewModel and matches it to the one currently on this screen
+                        if let cartItem = cartViewModel.cartItem.first(where: { $0.menuItems.id == item.id } ) {
+                            Stepper(
+                                onIncrement: {
+                                    cartViewModel.increaseQuantity(item: item)
+                                },
+                                onDecrement: {
+                                    cartViewModel.decreaseQuantity(item: item)
                                 }
+                            ) {
+                                Text("Quantity: \(cartItem.quantity)")
+                                    .font(.title2)
                             }
-                                .padding()
+                            .padding()
+
                         }
                         
                     }
@@ -62,7 +55,7 @@ struct MenuDetailView: View {
                         CartView(cartViewModel: cartViewModel)
                     } label: {
                         HStack {
-                            Text("Add to order")
+                            Text("View Cart")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                             

@@ -9,10 +9,11 @@ import SwiftUI
 import Supabase
 
 struct AccountView: View {
+    let user: User?
     var body: some View {
         NavigationStack {
             VStack {
-                
+                Text(user!.email ?? "")
             }
             .navigationTitle("Profile")
             .toolbar {
@@ -24,29 +25,11 @@ struct AccountView: View {
                     }
                 }
             }
-            .task {
-                await getInitialProfile()
-            }
-        }
-    }
-    
-    func getInitialProfile() async {
-        do {
-            let currentUser = try await SupabaseService.supabase.auth.session.user
-            try await SupabaseService.supabase
-                .from("users")
-                .select()
-                .eq("id", value: currentUser.id)
-                .single()
-                .execute()
-                .value
-           
-        } catch {
-            debugPrint(error)
+
         }
     }
 }
 
 #Preview {
-    AccountView()
+    AccountView(user: User(id: UUID(), email: "fahimuddin956@gmail.com", fullName: "Fahim Uddin"))
 }
