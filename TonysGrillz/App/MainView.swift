@@ -20,7 +20,7 @@ struct MainView: View {
                         Label("Home", systemImage: "house")
                     }
             } else {
-                LoggedOutView(isLoggedIn: $isLoggedIn, user: user ?? User(id: UUID(), email: "", fullName: ""))
+                LoggedOutView(isLoggedIn: $isLoggedIn, user: $user)
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
@@ -36,7 +36,7 @@ struct MainView: View {
                     Label("Cart", systemImage: "book")
                 }
             
-            AccountView(user: user)
+            AccountView(isLoggedIn: $isLoggedIn, user: user)
                 .tabItem {
                     Label("Account", systemImage: "person")
                 }

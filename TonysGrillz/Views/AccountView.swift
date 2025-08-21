@@ -9,11 +9,13 @@ import SwiftUI
 import Supabase
 
 struct AccountView: View {
+    @Binding var isLoggedIn: Bool
     let user: User?
     var body: some View {
         NavigationStack {
             VStack {
-                Text(user!.email ?? "")
+                Text(user?.email ?? "aint wokr")
+                Text(user?.fullName ?? "no name")
             }
             .navigationTitle("Profile")
             .toolbar {
@@ -21,15 +23,16 @@ struct AccountView: View {
                     Button("Sign Out", role: .destructive) {
                         Task {
                             try? await SupabaseService.supabase.auth.signOut()
+                            isLoggedIn = false
+                            
                         }
                     }
                 }
             }
-
         }
     }
 }
 
 #Preview {
-    AccountView(user: User(id: UUID(), email: "fahimuddin956@gmail.com", fullName: "Fahim Uddin"))
+    AccountView(isLoggedIn: .constant(true), user: User(id: UUID(), email: "fahimuddin956@gmail.com", fullName: "Fahim Uddin"))
 }
