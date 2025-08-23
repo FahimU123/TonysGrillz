@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LoggedOutView: View {
     @Binding var isLoggedIn: Bool
-    @Binding var user: User?
+    @Binding var user: Profile?
 
     var body: some View {
         VStack {
@@ -25,13 +25,6 @@ struct LoggedOutView: View {
                         guard let idToken = credential.identityToken.flatMap({ String(data: $0, encoding: .utf8) }) else {
                             return
                         }
-                        
-                        user = User(id: UUID(), email: credential.email ?? "", fullName: credential.fullName?.givenName ?? "")
-//                        
-//                        try await SupabaseService.supabase
-//                            .from("user")
-//                            .insert(user)
-//                            .execute()
                         
                         try await SupabaseService.supabase.auth.signInWithIdToken(
                             credentials: .init(

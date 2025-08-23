@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     @State private var cartViewModel = CartViewModel()
     @State private var isLoggedIn: Bool = false
-    @State private var user: User?
+    @State private var user: Profile?
     
     var body: some View {
         TabView {
@@ -36,7 +36,7 @@ struct MainView: View {
                     Label("Cart", systemImage: "book")
                 }
             
-            AccountView(isLoggedIn: $isLoggedIn, user: user)
+            AccountView(isLoggedIn: $isLoggedIn)
                 .tabItem {
                     Label("Account", systemImage: "person")
                 }
