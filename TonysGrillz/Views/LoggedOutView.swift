@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LoggedOutView: View {
     @Binding var isLoggedIn: Bool
-    @Binding var user: Profile?
+//    @Binding var profile: Profile?
 
     var body: some View {
         VStack {
@@ -38,6 +38,8 @@ struct LoggedOutView: View {
                         dump(error)
                     }
                     
+              
+                    
                    
                 }
             }
@@ -48,6 +50,6 @@ struct LoggedOutView: View {
 
 
 //#Preview {
-//    LoggedOutView(isLoggedIn: .constant(true), user: <#User#>)
+//    LoggedOutView(isLoggedIn: .constant(true))
 //}
 

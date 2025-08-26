@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Holds all users and refers to the auth table in Supabse to get the info and is updated by Supabse trigger
+/// Holds all users and refers to the auth table in Supabse to get the info and is updated by Supabse function
 struct Profile: Identifiable, Codable {
     let id: UUID
     let email: String

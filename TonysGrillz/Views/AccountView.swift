@@ -9,60 +9,39 @@ import SwiftUI
 import Supabase
 
 struct AccountView: View {
-    @State var email = ""
-    @State var fullName = ""
+    @State private var email = ""
     @Binding var isLoggedIn: Bool
     
     var body: some View {
         NavigationStack {
             VStack {
-                Text(email)
-                Text(fullName)
-              
+                Text(isLoggedIn ? email : "Log In!")
             }
             .navigationTitle("Profile")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
+                    // FIXME: This should be sign in or nothing when logg out
                     Button("Sign Out", role: .destructive) {
                         Task {
                             try? await SupabaseService.supabase.auth.signOut()
                             isLoggedIn = false
                             
                         }
-                    
+                        
                     }
                 }
             }
         }
         .onAppear {
             Task {
-                await getInitialProfile()
+                let currentUser = SupabaseService.supabase.auth.currentUser
+                self.email = currentUser?.email ?? "No email"
             }
-        }
-    }
-    
-    func getInitialProfile() async {
-        do {
-            let currentUser = try await SupabaseService.supabase.auth.session.user
-            let profile: Profile =
-            try await SupabaseService.supabase
-                .from("profiles")
-                .select()
-                .eq("id", value: currentUser.id)
-                .single()
-                .execute()
-                .value
-            
-            self.email = profile.email
-            self.fullName = profile.fullName
-            
-        } catch {
-            debugPrint(error)
         }
     }
 }
 
 
-//#Preview {
-//    AccountView(isLoggedIn: .constant(true), user: User(id: UUID(), email: "fahimuddin956@gmail.com", fullName: "Fahim Uddin"))
-//}
+#Preview {
+    AccountView(isLoggedIn: .constant(true))
+}

@@ -25,7 +25,7 @@ struct CartView: View {
                         Button {
                             cartViewModel.clearCart()
                         } label: {
-                            // Add an alert to this
+                            // FIXME: Add an alert to this
                             Text("Remove All")
                                 .font(.subheadline)
                             Image(systemName: "trash")
@@ -81,6 +81,7 @@ struct CartView: View {
                 Divider()
                 
                 VStack {
+                    // FIXME: Maybe add stepper here instead minus an plus button
                     HStack {
                         Text("Subtotal:")
                         Spacer()
