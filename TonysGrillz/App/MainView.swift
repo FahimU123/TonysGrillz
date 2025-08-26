@@ -10,7 +10,6 @@ import SwiftUI
 struct MainView: View {
     @State private var cartViewModel = CartViewModel()
     @State private var isLoggedIn: Bool = false
-    @State private var user: User?
     
     var body: some View {
         TabView {
@@ -20,7 +19,7 @@ struct MainView: View {
                         Label("Home", systemImage: "house")
                     }
             } else {
-                LoggedOutView(isLoggedIn: $isLoggedIn, user: user ?? User(id: UUID(), email: "", fullName: ""))
+                LoggedOutView(isLoggedIn: $isLoggedIn)
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
@@ -36,11 +35,22 @@ struct MainView: View {
                     Label("Cart", systemImage: "book")
                 }
             
-            AccountView(user: user)
+            AccountView(isLoggedIn: $isLoggedIn)
                 .tabItem {
                     Label("Account", systemImage: "person")
                 }
         }
+        .onAppear {
+            Task {
+                try await getCurrentUser()
+            }
+        }
+    }
+    
+    /// Allows the user session to persist so they dont have to login everytime
+    func getCurrentUser() async throws {
+        try await SupabaseService.supabase.auth.session
+        isLoggedIn = true
     }
 }
 

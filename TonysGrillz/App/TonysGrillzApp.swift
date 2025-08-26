@@ -18,6 +18,4 @@ struct TonysGrillzApp: App {
 
 // Next Steps:
 // More documentation
-// Data perisstentce
-// Complete Apple Credentils
-// Add stepper in CartView
+// Save orders

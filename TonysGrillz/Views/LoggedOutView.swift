@@ -10,7 +10,8 @@ import SwiftUI
 
 struct LoggedOutView: View {
     @Binding var isLoggedIn: Bool
-    let user: User
+//    @Binding var profile: Profile?
+
     var body: some View {
         VStack {
             SignInWithAppleButton { request in
@@ -18,33 +19,26 @@ struct LoggedOutView: View {
             } onCompletion: { result in
                 Task {
                     do {
-                        guard let credential = try result.get().credential as? ASAuthorizationAppleIDCredential
-                        else {
+                        guard let credential = try result.get().credential as? ASAuthorizationAppleIDCredential else {
                             return
                         }
-                        guard let idToken = credential.identityToken
-                            .flatMap({ String(data: $0, encoding: .utf8) })
-                        else {
+                        guard let idToken = credential.identityToken.flatMap({ String(data: $0, encoding: .utf8) }) else {
                             return
                         }
-                        guard let newEmail = credential.email else {
-                            return
-                        }
-                        guard let newFullName = credential.fullName?.givenName else {
-                            return
-                        }
-//                        let newUser = User(id: UUID(), email: newEmail, fullName: newFullName)
+                        
                         try await SupabaseService.supabase.auth.signInWithIdToken(
                             credentials: .init(
                                 provider: .apple,
                                 idToken: idToken
                             )
                         )
-                        
+
                         isLoggedIn = true
                     } catch {
                         dump(error)
                     }
+                    
+              
                     
                    
                 }

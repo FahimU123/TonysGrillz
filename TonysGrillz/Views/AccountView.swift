@@ -9,27 +9,39 @@ import SwiftUI
 import Supabase
 
 struct AccountView: View {
-    let user: User?
+    @State private var email = ""
+    @Binding var isLoggedIn: Bool
+    
     var body: some View {
         NavigationStack {
             VStack {
-                Text(user!.email ?? "")
+                Text(isLoggedIn ? email : "Log In!")
             }
             .navigationTitle("Profile")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
+                    // FIXME: This should be sign in or nothing when logg out
                     Button("Sign Out", role: .destructive) {
                         Task {
                             try? await SupabaseService.supabase.auth.signOut()
+                            isLoggedIn = false
+                            
                         }
+                        
                     }
                 }
             }
-
+        }
+        .onAppear {
+            Task {
+                let currentUser = SupabaseService.supabase.auth.currentUser
+                self.email = currentUser?.email ?? "No email"
+            }
         }
     }
 }
 
+
 #Preview {
-    AccountView(user: User(id: UUID(), email: "fahimuddin956@gmail.com", fullName: "Fahim Uddin"))
+    AccountView(isLoggedIn: .constant(true))
 }
