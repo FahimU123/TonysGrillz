@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CartView: View {
     let cartViewModel: CartViewModel
+    @State private var removeAll = false
     
     var body: some View {
         NavigationStack {
@@ -23,14 +24,23 @@ struct CartView: View {
                         Spacer()
                         
                         Button {
-                            cartViewModel.clearCart()
+                            removeAll.toggle()
                         } label: {
-                            // FIXME: Add an alert to this
                             Text("Remove All")
                                 .font(.subheadline)
                             Image(systemName: "trash")
                         }
                         .foregroundStyle(.red)
+                        .alert("Remove all", isPresented: $removeAll, actions: {
+                            Button("Cancel", role: .cancel) {
+                                
+                            }
+                            Button("Remove All", role: .destructive) {
+                                cartViewModel.clearCart()
+                            }
+                        }, message: {
+                            Text("This will remove every item from your cart")
+                        })
                     }
                     .padding(.horizontal)
                     
