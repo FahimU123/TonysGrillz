@@ -20,7 +20,7 @@ struct AccountView: View {
             .navigationTitle("Profile")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    // FIXME: This should be sign in or nothing when logg out
+                    // FIXME: This should be sign in or nothing when log out
                     Button("Sign Out", role: .destructive) {
                         Task {
                             try? await SupabaseService.supabase.auth.signOut()
