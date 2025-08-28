@@ -12,6 +12,7 @@ struct TonysGrillzApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+            // FIXME: Fix navigation so when you see menu detail view and then go to cart you can go starught back to menu
         }
     }
 }
@@ -19,3 +20,4 @@ struct TonysGrillzApp: App {
 // Next Steps:
 // More documentation
 // Save orders
+// Redo orders for one big table/struct when saving
