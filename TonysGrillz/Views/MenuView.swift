@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct MenuView: View {
-    @State private var menuItemsViewModel = MenuItemsViewModel(backendService: SupabaseService())
+    /// Step 7 of the Factory Method:  Now give it a factory which prodcues the backend you would like
+    @State private var menuItemsViewModel = MenuItemsViewModel(factory: SupabaseServiceFactory())
+    
     let cartViewModel: CartViewModel
     let orderItemViewModel: OrderItemsViewModel
     
@@ -26,6 +28,7 @@ struct MenuView: View {
                 .padding(.top)
             }
             .navigationTitle("Main Menu")
+            // FIXME: Search feature here. Refer to HIG
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     NavigationLink {
