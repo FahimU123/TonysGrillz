@@ -10,8 +10,10 @@ import SwiftUI
 struct MainView: View {
     @State private var cartViewModel = CartViewModel()
     @State private var isLoggedIn: Bool = false
+    @State private var orderItemViewModel = OrderItemsViewModel()
     
     var body: some View {
+        // FIXME: Do not let add to cart if not logged in
         TabView {
             if isLoggedIn {
                 LoggedInView()
@@ -25,14 +27,9 @@ struct MainView: View {
                     }
             }
             
-            MenuView(cartViewModel: cartViewModel)
+            MenuView(cartViewModel: cartViewModel, orderItemViewModel: orderItemViewModel)
                 .tabItem {
                     Label("Order", systemImage: "square.and.pencil")
-                }
-            
-            CartView(cartViewModel: cartViewModel)
-                .tabItem {
-                    Label("Cart", systemImage: "book")
                 }
             
             AccountView(isLoggedIn: $isLoggedIn)

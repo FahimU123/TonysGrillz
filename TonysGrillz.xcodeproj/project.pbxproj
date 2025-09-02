@@ -19,9 +19,22 @@
 		DDF2C2682E3EA69500F6F2B7 /* TonysGrillz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonysGrillz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		DDE58BAF2E671E64004DC285 /* Exceptions for "TonysGrillz" folder in "TonysGrillz" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = DDF2C2672E3EA69500F6F2B7 /* TonysGrillz */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		DDF2C26A2E3EA69500F6F2B7 /* TonysGrillz */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				DDE58BAF2E671E64004DC285 /* Exceptions for "TonysGrillz" folder in "TonysGrillz" target */,
+			);
 			path = TonysGrillz;
 			sourceTree = "<group>";
 		};
@@ -159,6 +172,8 @@
 /* Begin XCBuildConfiguration section */
 		DDF2C2712E3EA69600F6F2B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = DDF2C26A2E3EA69500F6F2B7 /* TonysGrillz */;
+			baseConfigurationReferenceRelativePath = Secrets.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -224,6 +239,8 @@
 		};
 		DDF2C2722E3EA69600F6F2B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = DDF2C26A2E3EA69500F6F2B7 /* TonysGrillz */;
+			baseConfigurationReferenceRelativePath = Secrets.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -282,6 +299,8 @@
 		};
 		DDF2C2742E3EA69600F6F2B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = DDF2C26A2E3EA69500F6F2B7 /* TonysGrillz */;
+			baseConfigurationReferenceRelativePath = Secrets.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -291,6 +310,7 @@
 				DEVELOPMENT_TEAM = SD28Q5JP86;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TonysGrillz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -314,6 +334,8 @@
 		};
 		DDF2C2752E3EA69600F6F2B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = DDF2C26A2E3EA69500F6F2B7 /* TonysGrillz */;
+			baseConfigurationReferenceRelativePath = Secrets.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -323,7 +345,7 @@
 				DEVELOPMENT_TEAM = SD28Q5JP86;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = TonysGrillz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

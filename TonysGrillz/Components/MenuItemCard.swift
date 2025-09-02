@@ -11,6 +11,7 @@ struct MenuItemCard: View {
     let item: MenuItems
     let cartViewModel: CartViewModel
     @State private var isPresenting = false
+    let orderItemViewModel: OrderItemsViewModel
     
     var body: some View {
         Button {
@@ -36,11 +37,11 @@ struct MenuItemCard: View {
    
         }
         .fullScreenCover(isPresented: $isPresenting) {
-            MenuDetailView(cartViewModel: cartViewModel, item: item)
+            MenuDetailView(cartViewModel: cartViewModel, item: item, orderItemViewModel: orderItemViewModel)
         }
     }
 }
-#Preview {
-    MenuItemCard(item: MenuItems(id: UUID(), name: "ss", price: 12.99, details: "ddsssssssssssd", isAvailable: true, image: "burger"), cartViewModel: CartViewModel())
-}
+//#Preview {
+//    MenuItemCard(item: MenuItems(id: UUID(), name: "ss", price: 12.99, details: "ddsssssssssssd", isAvailable: true, image: "burger"), cartViewModel: CartViewModel(), orderItemViewModel: OrderItemsViewModel())
+//}
 
