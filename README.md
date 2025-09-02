@@ -1,7 +1,7 @@
-Tony Grills
+# Tony Grillz
 An iOS app for ordering food from a restaurant.
 
-Key Features
+# Key Features
 
 Authentication
 
@@ -9,7 +9,7 @@ Menu & Cart: Browse the menu and manage your order.
 
 Upcoming: Pay with Stripe and a kitchen management system.
 
-Technical Design
+ # Technical Design
 
 The app's code is designed to be clean and easy to maintain. I have built it so far using these deisgn patterns and style of coding:
 
