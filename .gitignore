@@ -63,3 +63,5 @@ fastlane/test_output
 
 # Exclude sensitive configuration files
 Secrets.xcconfig
+
+.DS_Store
