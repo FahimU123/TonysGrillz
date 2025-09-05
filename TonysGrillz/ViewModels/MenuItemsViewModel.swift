@@ -21,7 +21,7 @@ final class MenuItemsViewModel {
         do {
             menuItems = try await backendService.fetchMenuItems()
         } catch {
-            print("Could not fetch menu items from Supbase \(error.localizedDescription)")
+            AppLogger.shared.debug("Could not fetch menu items from Supbase \(error.localizedDescription)")
         }
     }
 }

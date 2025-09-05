@@ -34,7 +34,7 @@ struct LoggedOutView: View {
 
                         isLoggedIn = true
                     } catch {
-                        dump(error)
+                        AppLogger.shared.debug("\(error)")
                     }
                     
               
