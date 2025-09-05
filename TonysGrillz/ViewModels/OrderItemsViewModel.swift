@@ -18,7 +18,7 @@ final class OrderItemsViewModel {
                 .insert(orderItems)
                 .execute()
         } catch {
-            print("cant save order \(error.localizedDescription)")
+            AppLogger.shared.debug("cant save order \(error.localizedDescription)")
         }
     }
 }

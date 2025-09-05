@@ -21,10 +21,9 @@ public enum AppEnviroment {
         return dict
     }()
     
-    // Get apiKey and baseURL from plist
     static let supabseKey: String = {
         guard let supabseKeyString = AppEnviroment.infoDictionary[Keys.supabaseKey] as? String else {
-            fatalError("Base URL not set in plist")
+            fatalError("Supabase key not set in plist")
         }
         return supabseKeyString
     }()
