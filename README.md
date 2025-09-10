@@ -1,4 +1,4 @@
-# Tony Grillz
+# Tony Grillz *Note: Not adding complexity for the sake of complexity, but to learn these design patterns more deeply*
 An iOS app for ordering food from a restaurant.
 
 # Key Features
